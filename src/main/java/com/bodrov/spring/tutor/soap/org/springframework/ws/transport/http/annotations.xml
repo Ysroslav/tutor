@@ -1,0 +1,5 @@
+<root>
+    <item name='org.springframework.ws.transport.http.MessageDispatcherServlet'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>
