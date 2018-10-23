@@ -113,4 +113,8 @@ public class DepartmentService {
     public <S extends Department> boolean exists(Example<S> example) {
         return departmentRepository.exists(example);
     }
+
+    public List<Department> findByDepartmentName(String departmentName) {
+        return departmentRepository.findByDepartmentName(departmentName);
+    }
 }
