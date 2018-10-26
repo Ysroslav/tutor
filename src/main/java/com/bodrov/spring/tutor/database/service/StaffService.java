@@ -113,8 +113,4 @@ public class StaffService {
     public <S extends Staff> boolean exists(Example<S> example) {
         return staffRepository.exists(example);
     }
-
-    public List<Staff> findByFirstName(String firstName) {
-        return staffRepository.findByFirstName(firstName);
-    }
 }

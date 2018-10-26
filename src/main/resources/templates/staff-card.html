@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>THE CARD OF STAFF</title>
+    <style>
+        aside{
+            background:#DCDCDC;
+            padding: 0px;
+            widht: 600px;
+            height:900px;
+            float: left;
+        }
+        body{
+            margin: 0px;
+            padding: 0;
+        }
+        a{
+            color:white;
+            text-decoration: none;
+        }
+        button{
+            font-size: 1.1em;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .green{background-color: #4CAF50;}
+        .blue{background-color: #008CBA;}
+        .red{background-color: #F43366;}
+        .gray{background-color: #E7E7E7; color:black;}
+        .black{background-color: #555555;}
+
+        .round {
+            border-radius: 100px;
+            border: 1px solid black;
+            box-shadow:0 0 7px #666;
+        }
+
+        .leftcoll{
+            font-size: 1.5em;
+            widht: 200px;
+            padding: 40px;
+        }
+
+        .rightcoll{
+            font-size: 1.5em;
+            padding: 40px;
+        }
+
+        .tabtest{
+            padding:60px;
+            margin: 40px;
+        }
+
+        footer{
+            min-width:100%;
+            margin: 0 auto;
+            position: fixed;
+            bottom: 0;
+            padding: 10px;
+            background: #778899;
+            color: #fff;
+        }
+        </style>
+</head>
+<body>
+<table width = "100%" cellspacing="10" cellpadding="10" bgcolor="black">
+    <tr>
+        <td align = "right" width="100%">
+            <a href = "/staff-list">ВЫХОД >></a>
+        </td>
+        <td nowrap="nowrap">&nbsp;</td>
+    </tr>
+</table>
+
+<aside>
+    <p><img src = "images/ava1.jpg" alt = "" class ="round"></p>
+    <p align ="center">Сотрудник:</p>
+    <p align ="center"><input type = "text" th:field="${staff.firstName}"/></p>
+    <p align ="center"><input type = "text" th:field="${staff.lastName}"/></p>
+    <p align ="center">Дата регистрации:</p>
+    <p align ="center"><input type = "text" th:field="${staff.dateAddStaff}"/></p>
+    <p align ="center">Департамент:</p>
+    <p align ="center"><input type = "text" th:field="${staff.department.departmentName}"/></p>
+</aside>
+<p>Предложенные тесты:</p>
+<table>
+<tr th:each = "polls, iter: ${polls}" th:class = "${iter.testName ? 'even': 'odd'}">
+    <td th:utext="${poll.textName}"><a th:href="@{'test-card?id=' + ${polls.id}}"/></td>
+</tr>
+</table>
+<p>Пройденные тесты:</p>
+<table>
+    <tr th:each = "pollsOff, iter: ${pollsOff}" th:class = "${iter.testName ? 'even': 'odd'}">
+        <td th:utext="${poll.textName}"><a th:href="@{'test-card?id=' + ${pollsOff.id}}"/></td>
+    </tr>
+</table>
+<footer>
+    &copy; Bodrov Yaroslav
+</footer>
+</body>
+</html>
