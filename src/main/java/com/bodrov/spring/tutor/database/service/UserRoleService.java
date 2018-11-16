@@ -1,5 +1,6 @@
 package com.bodrov.spring.tutor.database.service;
 
+import com.bodrov.spring.tutor.database.entity.User;
 import com.bodrov.spring.tutor.database.entity.UserRole;
 import com.bodrov.spring.tutor.database.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class UserRoleService {
 
     @Autowired
     private UserRoleRepository userRoleRepository;
+
+    public List<UserRole> findAllByUser(User user) {
+        return userRoleRepository.findAllByUser(user);
+    }
 
     public List<UserRole> findAll() {
         return userRoleRepository.findAll();

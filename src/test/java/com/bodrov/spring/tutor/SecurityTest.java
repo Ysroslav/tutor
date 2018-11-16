@@ -22,7 +22,7 @@ public class SecurityTest {
 
     @Test
     public void testAddNewStaff() {
-        final User user = userService.findByLogin("admin").get();
+        final User user = userService.findByLogin("secure").get();
 
         final Role role = new Role();
         role.setRoleName("ROLE_USER");

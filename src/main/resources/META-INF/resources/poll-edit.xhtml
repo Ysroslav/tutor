@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<f:metadata>
+    <f:viewParam name="id" value="#{pollEditController.id}" />
+    <f:viewAction action="#{pollEditController.init}" />
+</f:metadata>
+<h:body>
+    <h1><p:outputLabel value="EDIT POLL" /></h1>
+    <h:form>
+        <p:outputPanel>
+            <p:outputLabel value="NAME" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:inputText value="#{pollEditController.poll.testName}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:outputLabel value="DATE OF CREATING" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:calendar value="#{pollEditController.poll.dateCreateTest}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:outputLabel value="MIN BALL FOR SUCCESS" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:inputText value="#{pollEditController.poll.minValueBall}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:outputLabel value="TIME FOR TEST" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:inputText value="#{pollEditController.poll.timeTest}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:outputLabel value="TYPE TEST" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:selectOneMenu value="#{pollEditController.selectType}">
+                <f:selectItems value="#{pollEditController.nameTypes.entrySet()}" var = "entry"
+                itemValue="#{entry.key}" itemLabel="#{entry.value}"/>
+            </p:selectOneMenu>
+
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:commandButton value="SAVE" action="#{pollEditController.save}" />
+            <p:spacer width="20" />
+            <p:button value="POLLS" outcome="poll-list">
+                <f:param name="a" value="1" />
+            </p:button>
+        </p:outputPanel>
+
+    </h:form>
+</h:body>
+</html>

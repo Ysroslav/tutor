@@ -20,6 +20,12 @@ public class Department extends AbstractEntity {
     @Column(name = "department_name", nullable = false)
     private String departmentName;
 
+    public Department(){}
+
+    public Department(String departmentName){
+        this.departmentName = departmentName;
+    }
+
     @NotNull
     public String getDepartmentName() {
         return departmentName;

@@ -26,6 +26,13 @@ public class Question extends AbstractEntity {
     @ManyToOne
     private DictQuestion type;
 
+    public Question(){}
+
+    public Question(String questionText, Poll poll){
+        this.questionText=questionText;
+        this.poll = poll;
+    }
+
     public String getQuestionText() {
         return questionText;
     }

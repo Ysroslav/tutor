@@ -1,7 +1,6 @@
 package com.bodrov.spring.tutor.database.controller;
 
 import com.bodrov.spring.tutor.database.entity.Answer;
-import com.bodrov.spring.tutor.database.entity.Poll;
 import com.bodrov.spring.tutor.database.entity.Question;
 import com.bodrov.spring.tutor.database.repository.AnswerRepository;
 import com.bodrov.spring.tutor.database.repository.PollRepository;
@@ -33,13 +32,13 @@ public class QuestionController {
 
     @RequestMapping(value = "/test-active",method = RequestMethod.GET)
     public String openQuestion(@RequestParam("id") String pollId, Map<String, Object> model){
-        final Poll poll = pollRepository.findById(pollId).get();
+       /* final Poll poll = pollRepository.findById(pollId).get();
         this.questions = questionRepository.findAllByPoll(poll);
         this.numberQuestion = 0; // первый вопрос на открытие
         final Question question = questions.get(numberQuestion);
         model.put("question", question);
         final List<Answer> answers = answerRepository.findAllByQuestion(question);
-        model.put("answers", answers);
+        model.put("answers", answers);*/
         return "test-active";
     }
 

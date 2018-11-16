@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8">
+    <title>DEPARTMENTS</title>
+</h:head>
+<h:body>
+    <h1>СПРАВОЧНИК ОТДЕЛОВ</h1>
+    <p:dataTable var = "department" value = "#{departmentsView.departments}">
+        <p:column headerText = "Id">
+            <h:outputText value = "#{department.id}"/>
+        </p:column>
+        <p:column headerText = "The name of department">
+            <h:outputText value = "#{department.departmentName}"/>
+        </p:column>
+    </p:dataTable>
+    <!--table width="100%" cellspacing="10" cellpadding="10" border="1" style="...">
+        <tr>
+            <th colspan="7" align="center">
+                Departments
+            </th>
+        </tr>
+        <tr>
+            <th width="60" nowrap="nowrap" align="center">№</th>
+            <th width="200" nowrap="nowrap" align="left">ID</th>
+            <th width="300" nowrap="nowrap" align="center">NAME</th>
+            <th width="80" nowrap="nowrap" align="center">VIEW</th>
+            <th width="80" nowrap="nowrap" align="center">EDIT</th>
+            <th width="80" nowrap="nowrap" align="center">REMOVE</th>
+        </tr>
+        <f:forEach var="department" items="#{departments}" varStatus="status">
+            <tr>
+                <td align="center" nowrap="nowrap">#{status.index+1}</td>
+                <td align="left" nowrap="nowrap">#{department.id}</td>
+                <td align="center" nowrap="nowrap">#{department.departmentName}</td>
+                <td align="center" nowrap="nowrap">
+                    <a href = "/secure/department-view/#{department.id}">VIEW</a></td>
+                <td align="center" nowrap="nowrap">
+                    <a href = "/secure/department-edit/#{department.id}">EDIT</a></td>
+                <td align="center" nowrap="nowrap">
+                    <a href = "/secure/department-delete/#{department.id}">REMOVE</a></td>
+            </tr>
+        </f:forEach>
+    </table>
+    <table width = 100% cellspacing="0" cellpadding="0" border="0">
+        <tr>
+            <td nowrap="nowrap">
+                <form action="/profile/department-create">
+                    <button type="submit" class="green">CREATE A NEW DEPARTMENT</button>
+                </form>
+            </td>
+            <td width = "20" nowrap = "nowrap">&nbsp;</td>
+            <td nowrap="nowrap">
+                <form>
+                    <input type = "hidden" name = "time" value = "<%=System.currentTimeMillis()%>"/>
+                    <button type = "submit" class = "gray">REFRESH</button>
+                </form>
+            </td>
+            <td width="100%">
+                &nbsp;
+            </td>
+        </tr>
+    </table-->
+</h:body>
+</html>

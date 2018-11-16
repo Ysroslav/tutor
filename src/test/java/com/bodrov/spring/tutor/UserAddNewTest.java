@@ -46,11 +46,10 @@ public class UserAddNewTest {
         staffService.save(staff);
 
         final User user = new User();
-        user.setLogin("admin");
+        user.setLogin("secure");
         user.setPassword("123");
         user.setDisabled(true);
         user.setEmail("yar@r.t");
-        user.setStaff(staff);
         userService.save(user);
 
         final Role role = new Role();
@@ -72,6 +71,6 @@ public class UserAddNewTest {
         userRoleService.save(userRole1);
 
 
-        //Assert.assertEquals(user, userService.findByLogin("admin"));
+        //Assert.assertEquals(user, userService.findByLogin("secure"));
     }
 }

@@ -23,12 +23,18 @@ public class Answer extends AbstractEntity {
     @ManyToOne
     private Question question;
 
-    @Column(name = "is_right", nullable = false)
+    @Column(name = "is_right", nullable = true)
     private boolean isRight;
 
-    @Column(name = "ball_value", nullable = false)
+    @Column(name = "ball_value", nullable = true)
     private int ballValue;
 
+    public Answer(){}
+
+    public Answer(String answerText, Question question){
+        this.answerText = answerText;
+        this.question = question;
+    }
 
     public String getAnswerText() {
         return answerText;

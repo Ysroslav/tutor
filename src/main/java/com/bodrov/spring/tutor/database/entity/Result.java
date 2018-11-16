@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.util.Date;
 
 @Table(name = Result.TABLE_NAME)
 @Entity(name = Result.ENTITY_NAME)
@@ -24,17 +24,24 @@ public class Result extends AbstractEntity {
     @ManyToOne
     private Poll poll;
 
-    @Column(name = "ball_result", nullable = false)
+    @Column(name = "ball_result", nullable = true)
     private int ballResult;
 
-    @Column(name = "time_result", nullable = false)
+    @Column(name = "time_result", nullable = true)
     private int timeResult;
 
-    @Column(name = "date_test", nullable = false)
+    @Column(name = "date_test", nullable = true)
     private Date dateTest;
 
-    @Column(name = "result_text", nullable = false)
+    @Column(name = "result_text", nullable = true)
     private String result;
+
+    public Result(){}
+
+    public Result(Staff staff, Poll poll){
+        this.staff = staff;
+        this.poll = poll;
+    }
 
     public Staff getStaff() {
         return staff;
