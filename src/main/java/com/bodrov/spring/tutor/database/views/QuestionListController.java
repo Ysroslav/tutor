@@ -37,18 +37,18 @@ public class QuestionListController {
 
     public String deleteById(String id){
         questionRepository.deleteById(id);
-        return "/question-list.xhtml?faces-redirect=true";
+        return "/secure/question-list.xhtml?faces-redirect=true";
     }
 
     public String save(){
         final Poll poll = pollRepository.getOne(idPoll);
         final Question question = new Question("a new question", poll);
         questionRepository.save(question);
-        return "/question-list.xhtml";
+        return "/secure/question-list.xhtml";
     }
 
     public String refresh(){
-        return "/question-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
+        return "/secure/question-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
     }
 
     public String getIdPoll() {

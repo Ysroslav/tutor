@@ -37,18 +37,18 @@ public class AnswerListController {
 
     public String deleteById(String id){
         answerRepository.deleteById(id);
-        return "/answer-list.xhtml?faces-redirect=true";
+        return "/secure/answer-list.xhtml?faces-redirect=true";
     }
 
     public String save(){
         final Question question = questionRepository.getOne(idQuestion);
         final Answer answer = new Answer("Add text answer", question);
         answerRepository.save(answer);
-        return "/answer-list.xhtml?faces-redirect=true";
+        return "/secure/answer-list.xhtml?faces-redirect=true";
     }
 
     public String refresh(){
-        return "/answer-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
+        return "/secure/answer-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
     }
 
     public String getIdQuestion() {

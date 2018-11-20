@@ -30,7 +30,7 @@ public class DepartmentEditController {
     @NotNull
     public String save() {
         departmentRepository.save(department);
-        return "department-list";
+        return "secure/department-list";
     }
 
     @Nullable

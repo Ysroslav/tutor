@@ -18,6 +18,8 @@ public class Poll extends AbstractEntity {
     @NotNull
     public static final String TABLE_NAME = PREFIX + ENTITY_NAME;
 
+    public String tabName = TABLE_NAME;
+
     @Column(name = "poll_name", unique = false, nullable = false)
     private String testName;
 

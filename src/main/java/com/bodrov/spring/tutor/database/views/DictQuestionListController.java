@@ -30,16 +30,16 @@ public class DictQuestionListController {
 
     public String deleteById(String id){
         dictQuestionRepository.deleteById(id);
-        return "/dictquestion-list.xhtml?faces-redirect=true";
+        return "/secure/dictquestion-list.xhtml?faces-redirect=true";
     }
 
     public String save(){
         final DictQuestion dictQuestion = new DictQuestion("a new type question");
         dictQuestionRepository.save(dictQuestion);
-        return "/dictquestion-list.xhtml?faces-redirect=true";
+        return "/secure/dictquestion-list.xhtml?faces-redirect=true";
     }
 
     public String refresh(){
-        return "/dictquestion-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
+        return "/secure/dictquestion-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
     }
 }

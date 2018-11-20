@@ -32,16 +32,16 @@ public class DepartmentsView implements Serializable {
 
     public String deleteById(String id){
         departmentRepository.deleteById(id);
-        return "/department-list.xhtml?faces-redirect=true";
+        return "/secure/department-list.xhtml?faces-redirect=true";
     }
 
     public String save(){
         final Department department = new Department("a new department");
         departmentRepository.save(department);
-        return "/department-list.xhtml?faces-redirect=true";
+        return "/secure/department-list.xhtml?faces-redirect=true";
     }
 
     public String refresh(){
-        return "/department-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
+        return "/secure/department-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
     }
 }

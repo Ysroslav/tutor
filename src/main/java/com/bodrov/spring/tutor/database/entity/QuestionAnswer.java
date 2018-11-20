@@ -17,6 +17,8 @@ public class QuestionAnswer extends AbstractEntity {
     @NotNull
     public static final String TABLE_NAME = "tbl_question_ans";
 
+    public String tabName = TABLE_NAME;
+
     @ManyToOne
     private Staff staff;
 

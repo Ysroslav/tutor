@@ -45,7 +45,7 @@ public class ResultListController {
 
     public String deleteById(String id){
         resultRepository.deleteById(id);
-        return "/result-list.xhtml?faces-redirect=true";
+        return "/secure/result-list.xhtml?faces-redirect=true";
     }
 
     public String save(){
@@ -55,11 +55,11 @@ public class ResultListController {
             final Result result = new Result(staff, poll);
             resultRepository.save(result);
         }
-        return "/result-list.xhtml?faces-redirect=true";
+        return "/secure/result-list.xhtml?faces-redirect=true";
     }
 
     public String refresh(){
-        return "/result-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
+        return "/secure/result-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
     }
 
     public void setResults(List<Result> results) {

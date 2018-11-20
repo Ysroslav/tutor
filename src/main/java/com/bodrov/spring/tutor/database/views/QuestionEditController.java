@@ -73,7 +73,7 @@ public class QuestionEditController {
             question.setPoll(polls.get(selectPoll));
         }
         questionRepository.save(question);
-        return "question-list";
+        return "secure/question-list";
     }
 
     public Integer getSelectPoll() {

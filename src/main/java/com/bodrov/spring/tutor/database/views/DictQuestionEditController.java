@@ -30,7 +30,7 @@ public class DictQuestionEditController {
     @NotNull
     public String save() {
         dictQuestionRepository.save(dictQuestion);
-        return "dictquestion-list";
+        return "secure/dictquestion-list";
     }
 
     @Nullable

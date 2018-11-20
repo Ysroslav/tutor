@@ -16,6 +16,8 @@ public class User extends AbstractEntity {
     @NotNull
     public static final String TABLE_NAME = PREFIX + ENTITY_NAME;
 
+    public String tabName = TABLE_NAME;
+
     @Column(name = "login", unique = true, nullable = false)
     private String login;
 

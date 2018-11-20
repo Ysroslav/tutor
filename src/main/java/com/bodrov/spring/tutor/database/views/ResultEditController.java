@@ -64,7 +64,7 @@ public class ResultEditController {
         result.setPoll(pollList.get(selectPoll));
         result.setStaff(staffList.get(selectStaff));
         resultRepository.save(result);
-        return "result-list";
+        return "secure/result-list";
     }
 
     public Integer getSelectStaff() {

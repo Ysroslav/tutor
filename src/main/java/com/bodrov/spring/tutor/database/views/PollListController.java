@@ -33,16 +33,16 @@ public class PollListController {
 
     public String deleteById(String id){
         pollRepository.deleteById(id);
-        return "/poll-list.xhtml?faces-redirect=true";
+        return "/secure/poll-list.xhtml?faces-redirect=true";
     }
 
     public String save(){
         final Poll poll = new Poll("a new poll");
         pollRepository.save(poll);
-        return "/poll-list.xhtml?faces-redirect=true";
+        return "/secure/poll-list.xhtml?faces-redirect=true";
     }
 
     public String refresh(){
-        return "/poll-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
+        return "/secure/poll-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
     }
 }

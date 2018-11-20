@@ -18,6 +18,8 @@ public class Staff extends AbstractEntity {
     @NotNull
     public static final String TABLE_NAME = PREFIX + ENTITY_NAME;
 
+    public String tabName = TABLE_NAME;
+
     @Column(name = "first_name", nullable = true)
     private String firstName;
 

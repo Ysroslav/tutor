@@ -16,6 +16,8 @@ public class DictPoll extends AbstractEntity {
     @NotNull
     public static final String TABLE_NAME = "dict_poll";
 
+    public String tabName = TABLE_NAME;
+
     @Column(name = "type_name", unique = false, nullable = true)
     private String nameType;
 

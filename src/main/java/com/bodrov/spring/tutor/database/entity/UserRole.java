@@ -16,6 +16,8 @@ public class UserRole extends AbstractEntity {
     @NotNull
     public static final String TABLE_NAME = PREFIX + ENTITY_NAME;
 
+    public String tabName = TABLE_NAME;
+
     @ManyToOne
     private User user;
 

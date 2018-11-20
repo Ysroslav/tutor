@@ -48,7 +48,7 @@ public class StaffEditController {
     public String save() {
         staff.setDepartment(departmentList.get(selectType));
         staffRepository.save(staff);
-        return "staff-list";
+        return "secure/staff-list";
     }
 
     @Nullable

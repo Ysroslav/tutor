@@ -30,16 +30,16 @@ public class DictPollListController {
 
     public String deleteById(String id){
         dictPollRepository.deleteById(id);
-        return "/dictpoll-list.xhtml?faces-redirect=true";
+        return "/secure/dictpoll-list.xhtml?faces-redirect=true";
     }
 
     public String save(){
         final DictPoll dictPoll = new DictPoll("a new type test");
         dictPollRepository.save(dictPoll);
-        return "/dictpoll-list.xhtml?faces-redirect=true";
+        return "/secure/dictpoll-list.xhtml?faces-redirect=true";
     }
 
     public String refresh(){
-        return "/dictpoll-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
+        return "/secure/dictpoll-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
     }
 }

@@ -56,7 +56,7 @@ public class PollEditController {
     public String save() {
         poll.setType(dictPolls.get(selectType));
         pollRepository.save(poll);
-        return "poll-list";
+        return "secure/poll-list";
     }
 
     @Nullable

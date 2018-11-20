@@ -30,7 +30,7 @@ public class AnswerEditController {
     @NotNull
     public String save() {
         answerRepository.save(answer);
-        return "answer-list";
+        return "secure/answer-list";
     }
 
     @Nullable

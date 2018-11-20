@@ -30,16 +30,16 @@ public class StaffListController {
 
     public String deleteById(String id){
         staffRepository.deleteById(id);
-        return "/staff-list.xhtml?faces-redirect=true";
+        return "/secure/staff-list.xhtml?faces-redirect=true";
     }
 
     public String save(){
         final Staff staff = new Staff("first name", "last name");
         staffRepository.save(staff);
-        return "/staff-list.xhtml?faces-redirect=true";
+        return "/secure/staff-list.xhtml?faces-redirect=true";
     }
 
     public String refresh(){
-        return "/staff-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
+        return "/secure/staff-list.xhtml?faces-redirect=true" +System.currentTimeMillis();
     }
 }
