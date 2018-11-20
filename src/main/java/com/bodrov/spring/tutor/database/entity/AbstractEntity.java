@@ -12,6 +12,8 @@ public class AbstractEntity {
     @NotNull
     public static final String PREFIX = "tbl_";
 
+    public String tabName;
+
     @Id
     @NotNull
     private String id = UUID.randomUUID().toString();

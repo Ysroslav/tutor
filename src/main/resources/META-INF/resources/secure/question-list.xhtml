@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>.
+    <title>QUESTIONS</title>
+    <f:metadata>
+        <f:viewParam name="idPoll" value="#{questionListController.idPoll}" />
+        <f:viewAction action="#{questionListController.init}" />
+    </f:metadata>
+</h:head>
+<h:body>
+    <h2>QUESTIONS</h2>
+    <h:form>
+        <p:dataTable rowIndexVar="row" var = "question" value = "#{questionListController.questions}">
+            <p:column headerText = "№">
+                <h:outputText value = "#{row+1}"/>
+            </p:column>
+            <p:column headerText = "Id">
+                <h:outputText value = "#{question.id}"/>
+            </p:column>
+            <p:column headerText = "The text of the question">
+                <h:outputText value = "#{question.questionText}"/>
+            </p:column>
+            <p:column headerText = "The poll">
+                <h:outputText value = "#{question.poll.testName}"/>
+            </p:column>
+            <p:column headerText = "The type of question">
+                <h:outputText value = "#{question.type.nameType}"/>
+            </p:column>
+            <p:column headerText = "ANSWERS">
+                <p:link outcome="answer-list" value = "ANSWERS">
+                    <f:param name = "idQuestion" value =  "#{question.id}"/>
+                </p:link>
+            </p:column>
+            <p:column headerText = "EDIT">
+                <p:link outcome="question-edit" value = "EDIT">
+                    <f:param name = "id" value =  "#{question.id}"/>
+                </p:link>
+            </p:column>
+            <p:column headerText = "REMOVE">
+                <h:commandButton value = "REMOVE" action="#{questionListController.deleteById(question.id)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    <h:form>
+        <h:commandButton value = "CREATE A NEW QUESTIONS" action="#{questionListController.save}"/>
+        <h:commandButton value = "REFRESH" action="#{questionListController.refresh}"/>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>.
+    <title>TYPES OF POLLS</title>
+</h:head>
+<h:body>
+    <h2>TYPES</h2>
+    <h:form>
+        <p:dataTable rowIndexVar="row" var = "type" value = "#{dictPollListController.dictPolls}">
+            <p:column headerText = "№">
+                <h:outputText value = "#{row+1}"/>
+            </p:column>
+            <p:column headerText = "Id">
+                <h:outputText value = "#{type.id}"/>
+            </p:column>
+            <p:column headerText = "The name of type">
+                <h:outputText value = "#{type.nameType}"/>
+            </p:column>
+            <p:column headerText = "EDIT">
+                <p:link outcome="dictpoll-edit" value = "EDIT">
+                    <f:param name = "id" value =  "#{type.id}"/>
+                </p:link>
+            </p:column>
+            <p:column headerText = "REMOVE">
+                <h:commandButton value = "REMOVE" action="#{dictPollListController.deleteById(type.id)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    <h:form>
+        <h:commandButton value = "CREATE A NEW TYPE" action="#{dictPollListController.save}"/>
+        <h:commandButton value = "REFRESH" action="#{dictPollListController.refresh}"/>
+    </h:form>
+</h:body>
+</html>
