@@ -9,15 +9,15 @@ import com.bodrov.spring.tutor.database.repository.StaffRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 @Named
-@ViewScoped
+@SessionScope
 public class ResultEditController {
 
     @Autowired
@@ -64,7 +64,7 @@ public class ResultEditController {
         result.setPoll(pollList.get(selectPoll));
         result.setStaff(staffList.get(selectStaff));
         resultRepository.save(result);
-        return "secure/result-list";
+        return "/secure/result-list";
     }
 
     public Integer getSelectStaff() {

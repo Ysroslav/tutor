@@ -10,46 +10,39 @@
 <h:head>
 </h:head>
 <f:metadata>
-    <f:viewParam name="id" value="#{questionEditController.id}" />
-    <f:viewAction action="#{questionEditController.init}" />
+    <f:viewParam name="id" value="#{userRoleEditController.id}" />
+    <f:viewAction action="#{userRoleEditController.init}" />
 </f:metadata>
 <h:body>
-    <h1><p:outputLabel value="EDIT POLL" /></h1>
+    <h1><p:outputLabel value="EDIT ROLE OF THE USER" /></h1>
     <h:form>
-        <p:outputPanel>
-            <p:outputLabel value="THE TEXT OF THE QUESTION" />
-        </p:outputPanel>
-        <p:outputPanel>
-            <p:inputText value="#{questionEditController.question.questionText}" />
-        </p:outputPanel>
-        <p:spacer height="20" />
 
         <p:outputPanel>
-            <p:outputLabel value="TYPE QUESTION" />
+            <p:outputLabel value="THE USER" />
         </p:outputPanel>
         <p:outputPanel>
-            <p:selectOneMenu value="#{questionEditController.selectType}">
-                <f:selectItems value="#{questionEditController.nameTypes.entrySet()}" var = "entry"
+            <p:selectOneMenu value="#{userRoleEditController.selectRole}">
+                <f:selectItems value="#{userRoleEditController.nameRoles.entrySet()}" var = "entry"
+                               itemValue="#{entry.key}" itemLabel="#{entry.value}"/>
+            </p:selectOneMenu>
+        </p:outputPanel>
+
+        <p:outputPanel>
+            <p:outputLabel value="THE ROLE" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:selectOneMenu value="#{userRoleEditController.selectRole}">
+                <f:selectItems value="#{userRoleEditController.nameRoles.entrySet()}" var = "entry"
                                itemValue="#{entry.key}" itemLabel="#{entry.value}"/>
             </p:selectOneMenu>
         </p:outputPanel>
         <p:spacer height="20" />
 
-        <p:outputPanel>
-            <p:outputLabel value="POLL" />
-        </p:outputPanel>
-        <p:outputPanel>
-            <p:selectOneMenu value="#{questionEditController.selectPoll}">
-                <f:selectItems value="#{questionEditController.pollMap.entrySet()}" var = "entry"
-                               itemValue="#{entry.key}" itemLabel="#{entry.value}"/>
-            </p:selectOneMenu>
-        </p:outputPanel>
-        <p:spacer height="20" />
 
         <p:outputPanel>
-            <p:commandButton value="SAVE" action="#{questionEditController.save}" />
+            <p:commandButton value="SAVE" action="#{userRoleEditController.save}" />
             <p:spacer width="20" />
-            <p:button value="POLLS" outcome="/secure/question-list">
+            <p:button value="ROLES OF USERS" outcome="/secure/userrole-list">
                 <f:param name="a" value="1" />
             </p:button>
         </p:outputPanel>

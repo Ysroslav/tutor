@@ -3,16 +3,15 @@ package com.bodrov.spring.tutor.database.views;
 import com.bodrov.spring.tutor.database.entity.Department;
 import com.bodrov.spring.tutor.database.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-
-@ViewScoped
 @Named
+@SessionScope
 public class DepartmentsView implements Serializable {
 
     @Autowired

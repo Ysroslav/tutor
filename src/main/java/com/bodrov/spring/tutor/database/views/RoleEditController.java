@@ -1,7 +1,7 @@
 package com.bodrov.spring.tutor.database.views;
 
-import com.bodrov.spring.tutor.database.entity.Answer;
-import com.bodrov.spring.tutor.database.repository.AnswerRepository;
+import com.bodrov.spring.tutor.database.entity.Role;
+import com.bodrov.spring.tutor.database.repository.RoleRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,26 +11,26 @@ import javax.inject.Named;
 
 @Named
 @SessionScope
-public class AnswerEditController {
+public class RoleEditController {
 
     @Autowired
-    private AnswerRepository answerRepository;
+    private RoleRepository roleRepository;
 
     @Nullable
     private String id;
 
     @NotNull
-    private Answer answer = new Answer();
+    private Role role = new Role();
 
     public void init() {
-        @Nullable final Answer answer = answerRepository.getOne(id);
-        if (answer != null) this.answer = answer;
+        @Nullable final Role role = roleRepository.getOne(id);
+        if (role != null) this.role = role;
     }
 
     @NotNull
     public String save() {
-        answerRepository.save(answer);
-        return "/secure/answer-list";
+        roleRepository.save(role);
+        return "/secure/role-list";
     }
 
     @Nullable
@@ -43,12 +43,11 @@ public class AnswerEditController {
     }
 
     @NotNull
-    public Answer getAnswer() {
-        return answer;
+    public Role getRole() {
+        return role;
     }
 
-    public void setAnswer(@NotNull final Answer answer) {
-        this.answer = answer;
+    public void setRole(@NotNull final Role role) {
+        this.role = role;
     }
-
 }

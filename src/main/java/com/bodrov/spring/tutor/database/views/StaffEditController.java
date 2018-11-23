@@ -7,15 +7,15 @@ import com.bodrov.spring.tutor.database.repository.StaffRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 @Named
-@ViewScoped
+@SessionScope
 public class StaffEditController {
 
     @Autowired
@@ -48,7 +48,7 @@ public class StaffEditController {
     public String save() {
         staff.setDepartment(departmentList.get(selectType));
         staffRepository.save(staff);
-        return "secure/staff-list";
+        return "/secure/staff-list";
     }
 
     @Nullable

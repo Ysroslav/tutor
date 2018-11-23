@@ -5,12 +5,12 @@ import com.bodrov.spring.tutor.database.repository.DictQuestionRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named
-@ViewScoped
+@SessionScope
 public class DictQuestionEditController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class DictQuestionEditController {
     @NotNull
     public String save() {
         dictQuestionRepository.save(dictQuestion);
-        return "secure/dictquestion-list";
+        return "/secure/dictquestion-list";
     }
 
     @Nullable

@@ -10,24 +10,24 @@
 <h:head>
 </h:head>
 <f:metadata>
-    <f:viewParam name="id" value="#{dictPollEditController.id}" />
-    <f:viewAction action="#{dictPollEditController.init}" />
+    <f:viewParam name="id" value="#{roleEditController.id}" />
+    <f:viewAction action="#{roleEditController.init}" />
 </f:metadata>
 <h:body>
-    <h1><p:outputLabel value="EDIT TYPE OF TEST" /></h1>
+    <h1><p:outputLabel value="EDIT THE ROLE" /></h1>
     <h:form>
         <p:outputPanel>
-            <p:outputLabel value="NAME" />
+            <p:outputLabel value="NAME ROLE" />
         </p:outputPanel>
         <p:outputPanel>
-            <p:inputText value="#{dictPollEditController.dictPoll.nameType}" />
+            <p:inputText value="#{roleEditController.role.roleName}" />
         </p:outputPanel>
         <p:spacer height="20" />
 
         <p:outputPanel>
-            <p:commandButton value="SAVE" action="#{dictPollEditController.save}" />
+            <p:commandButton value="SAVE" action="#{roleEditController.save}" />
             <p:spacer width="20" />
-            <p:button value="TYPES" outcome="/secure/dictpoll-list">
+            <p:button value="ROLES" outcome="/secure/role-list">
                 <f:param name="a" value="1" />
             </p:button>
         </p:outputPanel>

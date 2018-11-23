@@ -9,15 +9,15 @@ import com.bodrov.spring.tutor.database.repository.QuestionRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 @Named
-@ViewScoped
+@SessionScope
 public class QuestionEditController {
 
     @Autowired
@@ -73,7 +73,7 @@ public class QuestionEditController {
             question.setPoll(polls.get(selectPoll));
         }
         questionRepository.save(question);
-        return "secure/question-list";
+        return "/secure/question-list";
     }
 
     public Integer getSelectPoll() {

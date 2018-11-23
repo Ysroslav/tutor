@@ -30,6 +30,13 @@ public class User extends AbstractEntity {
     @Column
     private Boolean disabled;
 
+    public User(){}
+
+    public User(String login, String email, String password){
+        this.login = login;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getLogin() {
         return login;

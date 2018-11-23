@@ -35,7 +35,7 @@
                 <h:outputText value = "#{staff.department.departmentName}"/>
             </p:column>
             <p:column headerText = "EDIT">
-                <p:link outcome="staff-edit" value = "EDIT">
+                <p:link outcome="/secure/staff-edit" value = "EDIT">
                     <f:param name = "id" value =  "#{staff.id}"/>
                 </p:link>
             </p:column>

@@ -5,12 +5,12 @@ import com.bodrov.spring.tutor.database.repository.DictPollRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named
-@ViewScoped
+@SessionScope
 public class DictPollEditController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class DictPollEditController {
     @NotNull
     public String save() {
         dictPollRepository.save(dictPoll);
-        return "secure/dictpoll-list";
+        return "/secure/dictpoll-list";
     }
 
     @Nullable

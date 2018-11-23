@@ -5,12 +5,12 @@ import com.bodrov.spring.tutor.database.repository.DepartmentRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-@ViewScoped
 @Named
+@SessionScope
 public class DepartmentEditController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class DepartmentEditController {
     @NotNull
     public String save() {
         departmentRepository.save(department);
-        return "secure/department-list";
+        return "/secure/department-list";
     }
 
     @Nullable

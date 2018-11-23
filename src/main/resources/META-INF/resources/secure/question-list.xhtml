@@ -34,7 +34,7 @@
                 <h:outputText value = "#{question.type.nameType}"/>
             </p:column>
             <p:column headerText = "ANSWERS">
-                <p:link outcome="answer-list" value = "ANSWERS">
+                <p:link outcome="/secure/answer-list" value = "ANSWERS">
                     <f:param name = "idQuestion" value =  "#{question.id}"/>
                 </p:link>
             </p:column>

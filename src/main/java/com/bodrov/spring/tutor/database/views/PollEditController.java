@@ -7,15 +7,15 @@ import com.bodrov.spring.tutor.database.repository.PollRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 @Named
-@ViewScoped
+@SessionScope
 public class PollEditController {
 
     @Autowired
@@ -56,7 +56,7 @@ public class PollEditController {
     public String save() {
         poll.setType(dictPolls.get(selectType));
         pollRepository.save(poll);
-        return "secure/poll-list";
+        return "/secure/poll-list";
     }
 
     @Nullable

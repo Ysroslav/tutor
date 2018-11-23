@@ -8,14 +8,14 @@ import com.bodrov.spring.tutor.database.repository.ResultRepository;
 import com.bodrov.spring.tutor.database.repository.StaffRepository;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.List;
 
 @Named
-@ViewScoped
+@SessionScope
 public class ResultListController {
 
     @Autowired

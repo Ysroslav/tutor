@@ -1,7 +1,7 @@
 package com.bodrov.spring.tutor.database.views;
 
-import com.bodrov.spring.tutor.database.entity.Answer;
-import com.bodrov.spring.tutor.database.repository.AnswerRepository;
+import com.bodrov.spring.tutor.database.entity.User;
+import com.bodrov.spring.tutor.database.repository.UserRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,26 +11,26 @@ import javax.inject.Named;
 
 @Named
 @SessionScope
-public class AnswerEditController {
+public class UserEditController {
 
     @Autowired
-    private AnswerRepository answerRepository;
+    private UserRepository userRepository;
 
     @Nullable
     private String id;
 
     @NotNull
-    private Answer answer = new Answer();
+    private User user = new User();
 
     public void init() {
-        @Nullable final Answer answer = answerRepository.getOne(id);
-        if (answer != null) this.answer = answer;
+        @Nullable final User user = userRepository.getOne(id);
+        if (user != null) this.user = user;
     }
 
     @NotNull
     public String save() {
-        answerRepository.save(answer);
-        return "/secure/answer-list";
+        userRepository.save(user);
+        return "/secure/user-list";
     }
 
     @Nullable
@@ -43,12 +43,11 @@ public class AnswerEditController {
     }
 
     @NotNull
-    public Answer getAnswer() {
-        return answer;
+    public User getUser() {
+        return user;
     }
 
-    public void setAnswer(@NotNull final Answer answer) {
-        this.answer = answer;
+    public void setUser(@NotNull final User user) {
+        this.user = user;
     }
-
 }
