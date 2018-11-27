@@ -1,0 +1,123 @@
+.header-container{
+    background:black;
+    height:75px;
+    width:100%;
+    box-shadow: 0px 3px 1px rgba(122,122,122,0.5);
+    position:relative;
+}
+
+.aside-menu{
+    background: #FFFFF0;
+    padding: 0px;
+    width:20%;
+    height:900px;
+    float: left;
+    position:relative;
+}
+
+.information-block{
+    height: 120px;
+    width:80%;
+    float:right;
+    background:#00008B;
+    background: linear-gradient(to right, #00008B, #4169E1);
+}
+
+.information-text{
+    padding-left:25px;
+    color: white;
+    padding-top:23px;
+}
+
+.left-menu{
+    padding: 0;
+    margin:0;
+    list-style:none;
+    font-family: 'Roboto', sans-serif;
+}
+.left-menu-list{
+    padding: 10px;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.left-menu-list li{
+    border-bottom: 1px solid #e3e9ea;
+}
+
+.left-menu-list a {
+    padding:10px 14px;
+    text-decoration: none;
+    color: #616a6b;
+    display: block;
+    box-sizing: border-box;
+}
+.left-menu-list li:hover{
+    background: #ADD8E6;
+}
+
+.header{
+    margin-right: 100px;
+    font-size: 35px;
+    display: block;
+    justify-content: space-between;
+}
+img{
+    width: 100px;
+    height: auto;
+}
+.main-menu{
+    display: flex;
+    position: relative;
+}
+.main-menu li{
+    list-style-type:none;
+}
+.menu{
+    padding-left:700px;
+    display: flex;
+    margin-top: 25px;
+}
+.menu li{
+    list-style-type:none;
+}
+.menu a{
+    display:block;
+    padding: 10px 13px;
+    font-family: Montserrat;
+    color: #DCDCDC;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: right;
+    text-decoration:none;
+}
+.menu .active-menu{
+    color:#fff;
+    font-weight:700;
+    border-bottom: 3px solid black;
+}
+.menu a:hover{
+    padding-bottom:11px;
+    color:#F5F5DC;
+    border-bottom:1px solid #F5F5DC;
+}
+.menu .active-menu:hover{
+    padding-bottom:10px;
+    border-bottom: 3px solid #F5F5DC;
+}
+
+.menu li:last-child:hover a{
+    border-bottom:0;
+    padding-bottom:10px;
+}
+
+#footer {
+    position: fixed;
+    left: 0; bottom: 0;
+    padding-left: 1200px;
+    padding-top:10px;
+    background: gray;
+    color: #fff;
+    width: 100%;
+    height: 30px;
+}
