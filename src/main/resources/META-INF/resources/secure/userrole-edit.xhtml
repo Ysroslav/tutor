@@ -21,9 +21,9 @@
             <p:outputLabel value="THE USER" />
         </p:outputPanel>
         <p:outputPanel>
-            <p:selectOneMenu value="#{userRoleEditController.selectRole}">
-                <f:selectItems value="#{userRoleEditController.nameRoles.entrySet()}" var = "entry"
-                               itemValue="#{entry.key}" itemLabel="#{entry.value}"/>
+            <p:selectOneMenu value="#{userRoleEditController.selectUser}">
+                <f:selectItems value="#{userRoleEditController.logins.entrySet()}" var = "entryLog"
+                               itemValue="#{entryLog.key}" itemLabel="#{entryLog.value}"/>
             </p:selectOneMenu>
         </p:outputPanel>
 

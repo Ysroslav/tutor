@@ -22,6 +22,10 @@ public class PollService {
         return pollRepository.findAll();
     }
 
+    public List<Poll> findAllByTestName(String testName) {
+        return pollRepository.findAllByTestName(testName);
+    }
+
     public List<Poll> findAll(Sort sort) {
         return pollRepository.findAll(sort);
     }

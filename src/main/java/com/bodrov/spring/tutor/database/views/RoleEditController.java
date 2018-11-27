@@ -5,12 +5,12 @@ import com.bodrov.spring.tutor.database.repository.RoleRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.annotation.SessionScope;
 
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named
-@SessionScope
+@ViewScoped
 public class RoleEditController {
 
     @Autowired

@@ -27,7 +27,7 @@ public class User extends AbstractEntity {
     @Column(name="password")
     private String password;
 
-    @Column
+    @Column(name = "disabled")
     private Boolean disabled;
 
     public User(){}

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,18 +35,12 @@ public class RoleService {
         return roleRepository.saveAll(iterable);
     }
 
-    public void flush() {
-        roleRepository.flush();
-    }
-
-    public <S extends Role> S saveAndFlush(S s) {
-        return roleRepository.saveAndFlush(s);
-    }
-
+    @Transactional
     public void deleteInBatch(Iterable<Role> iterable) {
         roleRepository.deleteInBatch(iterable);
     }
 
+    @Transactional
     public void deleteAllInBatch() {
         roleRepository.deleteAllInBatch();
     }
@@ -66,6 +61,7 @@ public class RoleService {
         return roleRepository.findAll(pageable);
     }
 
+    @Transactional
     public <S extends Role> S save(S s) {
         return roleRepository.save(s);
     }
@@ -82,18 +78,22 @@ public class RoleService {
         return roleRepository.count();
     }
 
+    @Transactional
     public void deleteById(String s) {
         roleRepository.deleteById(s);
     }
 
+    @Transactional
     public void delete(Role role) {
         roleRepository.delete(role);
     }
 
+    @Transactional
     public void deleteAll(Iterable<? extends Role> iterable) {
         roleRepository.deleteAll(iterable);
     }
 
+    @Transactional
     public void deleteAll() {
         roleRepository.deleteAll();
     }

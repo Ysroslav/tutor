@@ -6,6 +6,15 @@
     position:relative;
 }
 
+.aside-menu{
+    background: #FFFFF0;
+    padding: 0px;
+    width:20%;
+    height:900px;
+    float: left;
+    position:relative;
+}
+
 .information-block{
     height: 120px;
     width:80%;
@@ -39,9 +48,12 @@
 .left-menu-list a {
     padding:10px 14px;
     text-decoration: none;
-    color:  #616a6b;
+    color: #616a6b;
     display: block;
     box-sizing: border-box;
+}
+.left-menu-list li:hover{
+    background: #ADD8E6;
 }
 
 .header{

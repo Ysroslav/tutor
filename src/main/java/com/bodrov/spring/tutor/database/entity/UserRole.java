@@ -2,9 +2,7 @@ package com.bodrov.spring.tutor.database.entity;
 
 import org.jetbrains.annotations.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = UserRole.TABLE_NAME)
 @Entity(name = UserRole.ENTITY_NAME)
@@ -18,10 +16,10 @@ public class UserRole extends AbstractEntity {
 
     public String tabName = TABLE_NAME;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Role role;
 
     public User getUser() {

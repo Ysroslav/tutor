@@ -9,15 +9,15 @@ import com.bodrov.spring.tutor.database.repository.UserRoleRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.annotation.SessionScope;
 
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 @Named
-@SessionScope
+@ViewScoped
 public class UserRoleEditController {
 
     @Autowired
@@ -47,20 +47,26 @@ public class UserRoleEditController {
     private String id;
 
     @NotNull
-    private UserRole userRole = new UserRole();
+    private UserRole userRole;
 
     public void init() {
         @Nullable final UserRole userRole = userRoleRepository.getOne(id);
         if (userRole != null) this.userRole = userRole;
         roles = roleRepository.findAll();
+        users = userRepository.findAll();
         nameRoles = new LinkedHashMap<>();
+        logins = new LinkedHashMap<>();
         for(int i = 0; i<roles.size(); i++) nameRoles.put(i, roles.get(i).getRoleName());
+        for(int i = 0; i<users.size(); i++) logins.put(i, users.get(i).getLogin());
     }
 
     @NotNull
     public String save() {
-        userRole.setRole(roles.get(selectRole));
-        userRoleRepository.save(userRole);
+        if(selectUser != null && selectRole != null) {
+            userRole.setRole(roles.get(selectRole));
+            userRole.setUser(users.get(selectUser));
+            userRoleRepository.save(userRole);
+        }
         return "/secure/userrole-list";
     }
 
@@ -112,5 +118,21 @@ public class UserRoleEditController {
 
     public void setLogins(Map<Integer, String> logins) {
         this.logins = logins;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public Integer getSelectUser() {
+        return selectUser;
+    }
+
+    public void setSelectUser(Integer selectUser) {
+        this.selectUser = selectUser;
     }
 }

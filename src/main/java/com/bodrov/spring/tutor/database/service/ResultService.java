@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,10 @@ public class ResultService {
         return resultRepository.findAllByStaff(staff);
     }
 
+    public long countByStaff(Staff staff) {
+        return resultRepository.countByStaff(staff);
+    }
+
     public List<Result> findAll() {
         return resultRepository.findAll();
     }
@@ -35,22 +40,17 @@ public class ResultService {
         return resultRepository.findAllById(iterable);
     }
 
+    @Transactional
     public <S extends Result> List<S> saveAll(Iterable<S> iterable) {
         return resultRepository.saveAll(iterable);
     }
 
-    public void flush() {
-        resultRepository.flush();
-    }
-
-    public <S extends Result> S saveAndFlush(S s) {
-        return resultRepository.saveAndFlush(s);
-    }
-
+    @Transactional
     public void deleteInBatch(Iterable<Result> iterable) {
         resultRepository.deleteInBatch(iterable);
     }
 
+    @Transactional
     public void deleteAllInBatch() {
         resultRepository.deleteAllInBatch();
     }
@@ -87,18 +87,22 @@ public class ResultService {
         return resultRepository.count();
     }
 
+    @Transactional
     public void deleteById(String s) {
         resultRepository.deleteById(s);
     }
 
+    @Transactional
     public void delete(Result result) {
         resultRepository.delete(result);
     }
 
+    @Transactional
     public void deleteAll(Iterable<? extends Result> iterable) {
         resultRepository.deleteAll(iterable);
     }
 
+    @Transactional
     public void deleteAll() {
         resultRepository.deleteAll();
     }

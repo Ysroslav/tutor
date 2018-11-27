@@ -3,14 +3,14 @@ package com.bodrov.spring.tutor.database.views;
 import com.bodrov.spring.tutor.database.entity.UserRole;
 import com.bodrov.spring.tutor.database.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.List;
 
 @Named
-@SessionScope
+@ViewScoped
 public class UserRoleListController {
 
     @Autowired

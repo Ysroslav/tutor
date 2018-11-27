@@ -17,6 +17,20 @@
 <h:body>
     <h1><p:outputLabel value="EDIT THE USER" /></h1>
     <h:form>
+        <p:outputPanel>
+            <p:outputLabel value="NAME" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:inputText value="#{userEditController.user.login}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+        <p:outputPanel>
+            <p:outputLabel value="EMAIL" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:inputText value="#{userEditController.user.email}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
         <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
             <h:outputText value="Active: " />
             <p:inputSwitch value="#{userEditController.user.disabled}" >

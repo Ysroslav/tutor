@@ -38,6 +38,12 @@ public class Result extends AbstractEntity {
     @Column(name = "result_text", nullable = true)
     private String result;
 
+    @Column(name = "date_to", nullable = true)
+    private Date dateTo;
+
+    @Column(name = "date_end", nullable = true)
+    private Date dateEnd;
+
     public Result(){}
 
     public Result(Staff staff, Poll poll){
@@ -91,5 +97,21 @@ public class Result extends AbstractEntity {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public Date getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public Date getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(Date dateEnd) {
+        this.dateEnd = dateEnd;
     }
 }
