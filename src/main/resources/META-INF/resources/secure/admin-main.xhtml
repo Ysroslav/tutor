@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>ADMIN PANEL</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+<div class = "header-container">
+    <ul class = "main-menu">
+        <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
+        <li>
+            <div class = "header">
+            <ul class = "menu">
+                <li><a class="active-menu" href = "/secure/admin-main.xhtml">MAIN</a></li>
+                <li><a href = "#">TABLES</a></li>
+                <li><a href = "/logout">LOUYOT</a></li>
+            </ul>
+        </div>
+        </li>
+    </ul>
+</div>
+<div class = "information-block">
+    <h2 class = "information-text">Statistical information</h2>
+</div>
+    <h:form>
+        <h3 style="padding-left: 5%">Data of the program</h3>
+             <p:dataTable style="width: 90%; padding-left: 5%;" rowIndexVar="row" var = "repository" value = "#{adminListController.repositories}">
+                  <p:column style="text-align: center; width: 10%;" headerText = "№">
+                      <h:outputText value = "#{row+1}"/>
+                  </p:column>
+                  <p:column style="text-align: left; width: 60%;" headerText = "Repository">
+                      <h:outputText value = "#{repository.nameRepository}"/>
+                  </p:column>
+                  <p:column style="text-align: center; width: 20%;" headerText = "Number of rows">
+                      <h:outputText value = "#{repository.countRows}"/>
+                  </p:column>
+                 <p:column style="text-align: center; width: 10%;" headerText = "Show">
+                     <p:link outcome="#{repository.pathXhtml}" value = "SHOW"/>
+                 </p:column>
+             </p:dataTable>
+     </h:form>
+<div id = "footer">
+     <ui:insert name="footer">
+        Yaroslav Bodrov
+     </ui:insert>
+</div>
+</h:body>
+</html>

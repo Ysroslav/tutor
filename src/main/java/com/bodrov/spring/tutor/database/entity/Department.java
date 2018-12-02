@@ -16,9 +16,17 @@ public class Department extends AbstractEntity {
     @NotNull
     public static final String TABLE_NAME = PREFIX + ENTITY_NAME;
 
+    public String tabName = TABLE_NAME;
+
     @NotNull
     @Column(name = "department_name", nullable = false)
     private String departmentName;
+
+    public Department(){}
+
+    public Department(String departmentName){
+        this.departmentName = departmentName;
+    }
 
     @NotNull
     public String getDepartmentName() {

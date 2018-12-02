@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<h:head>.
+    <title>ROLES OF USERS</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+    <div class = "header-container">
+        <ul class = "main-menu">
+            <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
+            <li><div class = "header">
+                <ul class = "menu">
+                    <li><a class="active-menu" href = "/secure/admin-main.xhtml">MAIN</a></li>
+                    <li><a href = "#">TABLES</a></li>
+                    <li><a href = "/logout">LOUYOT</a></li>
+                </ul>
+            </div></li>
+        </ul>
+    </div>
+    <h3>USERS</h3>
+    <h:form>
+        <p:dataTable rowIndexVar="row" var = "user" value = "#{userRoleListController.userRoles}">
+            <p:column headerText = "№">
+                <h:outputText value = "#{row+1}"/>
+            </p:column>
+            <p:column headerText = "Id">
+                <h:outputText value = "#{user.id}"/>
+            </p:column>
+            <p:column headerText = "The login">
+                <h:outputText value = "#{user.user.login}"/>
+            </p:column>
+            <p:column headerText = "The role">
+                <h:outputText value = "#{user.role.roleName}"/>
+            </p:column>
+            <p:column headerText = "disabled">
+                <h:outputText value = "#{user.user.disabled}"/>
+            </p:column>
+            <p:column headerText = "EDIT">
+                <p:link outcome="/secure/userrole-edit" value = "EDIT">
+                    <f:param name = "id" value =  "#{user.id}"/>
+                </p:link>
+            </p:column>
+            <p:column headerText = "REMOVE">
+                <h:commandButton value = "REMOVE" action="#{userRoleListController.deleteById(user.id)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    <h:form>
+        <h:commandButton value = "CREATE A NEW USER" action="#{userRoleListController.save}"/>
+        <h:commandButton value = "REFRESH" action="#{userRoleListController.refresh}"/>
+    </h:form>
+    <div id = "footer">
+        <ui:insert name="footer">
+            Yaroslav Bodrov
+        </ui:insert>
+    </div>
+
+</h:body>
+</html>

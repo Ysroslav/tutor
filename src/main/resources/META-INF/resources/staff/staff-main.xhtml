@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>USER PAGE</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <f:metadata>
+        <f:viewParam name="id" value="#{userMainController.id}" />
+        <f:viewAction action="#{userMainController.init}" />
+    </f:metadata>
+</h:head>
+<h:body>
+    <div class = "header-container">
+        <ul class = "main-menu">
+            <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
+            <li>
+                <div class = "header">
+                    <ul class = "menu" style="padding-left: 900px">
+                        <li><a class="active-menu" href = "/staff/staff-main.xhtml">MAIN</a></li>
+                        <li><a href = "/logout">LOUYOT</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+<h:form>
+    <ul class = "staff-container">
+         <li><h:outputText value="#{userMainController.staff.lastName} #{userMainController.staff.firstName}"/></li>
+         <li><h:outputText value="Department:"/></li>
+         <li style="margin-left: 20px; text-decoration: underline;"><h:outputText value="#{userMainController.staff.department.departmentName}"/></li>
+    </ul>
+</h:form>
+    <h3>Assigned test</h3>
+    <h:form>
+        <p:dataTable rowIndexVar="row" var = "test" value = "#{userMainController.resultsNotDone}">
+            <p:column headerText = "№">
+                <h:outputText value = "#{row+1}"/>
+            </p:column>
+            <p:column headerText = "TEST">
+                <h:outputText value = "#{test.poll.testName}"/>
+            </p:column>
+            <p:column headerText = "DATE TO">
+                <h:outputText value = "#{test.dateTo}">
+                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column headerText = "DATE CREATE">
+                <h:outputText value = "#{test.dateTest}">
+                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column headerText = "MIN BALL">
+                <h:outputText value = "#{test.poll.minValueBall}"/>
+            </p:column>
+            <p:column headerText = "TIME FOR TEST">
+                <h:outputText value = "#{test.poll.timeTest}"/>
+            </p:column>
+            <p:column headerText = "BEGIN">
+                <p:link outcome="/staff/staffgo-test" value = "BEGIN">
+                    <f:param name = "id" value =  "#{test.id}"/>
+                </p:link>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    <h3>Done tests</h3>
+    <h:form>
+        <p:dataTable rowIndexVar="row" var = "testDone" value = "#{userMainController.resultsDone}">
+            <p:column headerText = "№">
+                <h:outputText value = "#{row+1}"/>
+            </p:column>
+            <p:column headerText = "TEST">
+                <h:outputText value = "#{testDone.poll.testName}"/>
+            </p:column>
+            <p:column headerText = "DATE CREATE">
+                <h:outputText value = "#{testDone.dateTest}">
+                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column headerText = "BALL">
+                <h:outputText value = "#{testDone.poll.minValueBall}"/>
+            </p:column>
+            <p:column headerText = "RESULT">
+                <h:outputText value = "#{testDone.poll.minValueBall}"/>
+            </p:column>
+            <p:column headerText = "SHOW">
+                <h:commandButton value = "REMOVE" action="#{teacherPanelController.deleteById(test.id)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>
