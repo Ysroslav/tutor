@@ -11,8 +11,8 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css"/>
 </h:head>
 <f:metadata>
-    <f:viewParam name="id" value="#{staffEditController.id}" />
-    <f:viewAction action="#{staffEditController.init}" />
+    <f:viewParam name="id" value="#{teacherAddTestController.id}" />
+    <f:viewAction action="#{teacherAddTestController.init}" />
 </f:metadata>
 <h:body>
     <div class = "header-container">
@@ -34,14 +34,14 @@
             <p:outputLabel value="FULL NAME" />
         </p:outputPanel>
         <p:outputPanel>
-            <h:outputText value="#{staffEditController.staff.firstName} #{staffEditController.staff.lastName}"/>
+            <h:outputText value="#{teacherAddTestController.staff.firstName} #{teacherAddTestController.staff.lastName}"/>
         </p:outputPanel>
         <p:spacer height="20" />
         <p:outputPanel>
             <p:outputLabel value="DEPARTMENT" />
         </p:outputPanel>
         <p:outputPanel>
-            <h:outputText value="#{staffEditController.staff.department.departmentName}"/>
+            <h:outputText value="#{teacherAddTestController.staff.department.departmentName}"/>
         </p:outputPanel>
         <p:spacer height="20" />
     </h:form>
@@ -72,18 +72,14 @@
                 <h:outputText value = "#{poll.type.nameType}"/>
             </p:column>
             <p:column headerText = "ADD">
-                <p:commandButton value="ADD" action="#{teacherAddTestController.addNewTest}">
-                    <p:confirm header="Cheek test" message="Choose the control date"/>
-                </p:commandButton>
+                <p:link outcome="/teacher/teacher-new-test-edit" value = "ADD">
+                    <f:param name = "id" value =  "#{poll.id};#{teacherAddTestController.id}"/>
+                </p:link>
             </p:column>
         </p:dataTable>
-    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-        <p:calendar style="padding-right: 10px;" value="#{teacherAddTestController.result.dateTo}"/>
-        <p:commandButton value="Yes" type="button"  action="#{teacherAddTestController.takeControlDate(poll.id)}"/>
-        <p:commandButton value="No" type="button" />
-    </p:confirmDialog>
     </h:form>
     <h:form>
+        <h3 style="margin-top: 0">Assined tests</h3>
         <p:dataTable rowIndexVar="row" var = "test" value = "#{teacherAddTestController.newTests}">
         <p:column headerText = "№">
             <h:outputText value = "#{row+1}"/>
@@ -96,6 +92,5 @@
         </p:column>
         </p:dataTable>
     </h:form>
-
 </h:body>
 </html>

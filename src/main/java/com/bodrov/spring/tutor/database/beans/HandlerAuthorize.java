@@ -16,7 +16,6 @@ import java.util.Map;
 @ManagedBean
 public class HandlerAuthorize {
 
-
     @Autowired
     private UserRepository userRepository;
 

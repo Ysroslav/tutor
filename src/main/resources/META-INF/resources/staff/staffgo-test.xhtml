@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>GO TEST</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <f:metadata>
+        <f:viewParam name="id" value="#{userGoPollController.id}" />
+        <f:viewAction action="#{userGoPollController.init}" />
+    </f:metadata>
+</h:head>
+<h:body>
+<div class = "header-container">
+    <ul class = "main-menu">
+        <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
+        <li>
+            <div class = "header">
+                <ul class = "menu" style="padding-left: 900px">
+                    <li><a class="active-menu" href = "/staff/staff-main.xhtml">MAIN</a></li>
+                    <li><a href = "/logout">LOUYOT</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--h:form id="display">
+    <h2><h:outputText value="#{userGoPollController.questions.get(userGoPollController.index).questionText}"/></h2>
+        <p:dataTable id="tab-answer" rowIndexVar="row" var = "answer" value = "#{userGoPollController.answers}">
+            <p:column>
+               <p:selectOneRadio id="console" value="#{answer.right}">
+                  <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+               </p:selectOneRadio>
+            </p:column>
+            <p:column>
+                <h:outputText value = "#{answer.answerText}"/>
+            </p:column>
+            <p:column>
+                <h:selectBooleanCheckbox value = "#{answer.right}"/>
+            </p:column>
+        </p:dataTable>
+</h:form-->
+<h:form id="display">
+    <h2><h:outputText value="#{userGoPollController.questions.get(userGoPollController.index).questionText}"/></h2>
+    <p:selectOneRadio id = "idAnswer" value="#{userGoPollController.idAnswer}" layout="responsive" columns="1">
+        <f:selectItems value="#{userGoPollController.answers}" var="c" itemLabel="#{c.answerText}" itemValue="#{c.id}"/>
+    </p:selectOneRadio>
+</h:form>
+<h:form>
+    <h:panelGrid columns="3" style="margin-top: 10px">
+        <p:commandButton value="Back" update="display" action="#{userGoPollController.getDiscrement}"/>
+        <p:commandButton value="Answer" action="#{userGoPollController.getAnswerStaff}"/>
+        <p:commandButton value="Forward" update="display" action="#{userGoPollController.getIncrement}"/>
+    </h:panelGrid>
+</h:form>
+</h:body>
+</html>

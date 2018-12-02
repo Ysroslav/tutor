@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -25,10 +24,7 @@ public class TeacherPanelController {
     @PostConstruct
     public void init(){
         List<Result> testNotEnd = resultRepository.findAll();
-        this.results = new ArrayList<>();
-        for(int i=0; i<testNotEnd.size(); i++){
-            if(testNotEnd.get(i).getResult().isEmpty()) results.add(testNotEnd.get(i));
-        }
+        this.results = resultRepository.findAllByResultIsNull();
     }
 
     public long countNumberTest(Staff staff){
@@ -36,13 +32,13 @@ public class TeacherPanelController {
     }
 
     public String countAverageRateSuccess(Staff staff){
-        final List<Result> results = resultRepository.findAllByStaff(staff);
-        if(results.size()==0) return "No tests passed";
+        final List<Result> resultList = resultRepository.findAllByResultIsNotNullAndStaff(staff);
+        if(resultList.size()==0) return "No tests passed";
         long numberSuccess = 0;
-        for(int i = 0; i<results.size(); i++){
-            if(results.get(i).getResult().equals(SUCCESS)) numberSuccess++;
+        for(int i = 0; i<resultList.size(); i++){
+            if(resultList.get(i).getResult().equals(SUCCESS)) numberSuccess++;
         }
-        return String.format("%.2f", numberSuccess/results.size()*100)+"%";
+        return String.format("%.2f", numberSuccess/resultList.size()*100)+"%";
     }
 
 

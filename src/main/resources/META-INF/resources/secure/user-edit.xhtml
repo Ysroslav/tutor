@@ -37,6 +37,16 @@
             </p:inputSwitch>
         </h:panelGrid>
         <p:outputPanel>
+            <p:outputLabel value="THE EMPLOYEE" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:selectOneMenu value="#{userEditController.selectStaff}">
+                <f:selectItems value="#{userEditController.staffs.entrySet()}" var = "entry"
+                               itemValue="#{entry.key}" itemLabel="#{entry.value}"/>
+            </p:selectOneMenu>
+        </p:outputPanel>
+        <p:spacer height="20" />
+        <p:outputPanel>
             <p:commandButton value="SAVE" action="#{userEditController.save}" />
             <p:spacer width="20" />
             <p:button value="USERS" outcome="/secure/user-list">

@@ -5,13 +5,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
       xml:lang="en" lang="en">
 <h:head>.
     <title>USERS</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
 </h:head>
 <h:body>
-    <h2>USERS</h2>
+    <div class = "header-container">
+        <ul class = "main-menu">
+            <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
+            <li><div class = "header">
+                <ul class = "menu">
+                    <li><a class="active-menu" href = "/secure/admin-main.xhtml">MAIN</a></li>
+                    <li><a href = "#">TABLES</a></li>
+                    <li><a href = "/logout">LOUYOT</a></li>
+                </ul>
+            </div></li>
+        </ul>
+    </div>
+    <h3>USERS</h3>
     <h:form>
         <p:dataTable rowIndexVar="row" var = "user" value = "#{userListController.users}">
             <p:column headerText = "№">
@@ -29,6 +42,9 @@
             <p:column headerText = "disabled">
                 <h:outputText value = "#{user.disabled}"/>
             </p:column>
+            <p:column headerText = "The Employee">
+                <h:outputText value = "#{user.staff.lastName} #{user.staff.firstName}"/>
+            </p:column>
             <p:column headerText = "EDIT">
                 <p:link outcome="/secure/user-edit" value = "EDIT">
                     <f:param name = "id" value =  "#{user.id}"/>
@@ -43,5 +59,11 @@
         <h:commandButton value = "CREATE A NEW USER" action="#{userListController.save}"/>
         <h:commandButton value = "REFRESH" action="#{userListController.refresh}"/>
     </h:form>
+    <div id = "footer">
+        <ui:insert name="footer">
+            Yaroslav Bodrov
+        </ui:insert>
+    </div>
+
 </h:body>
 </html>

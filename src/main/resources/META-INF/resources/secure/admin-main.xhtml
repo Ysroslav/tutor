@@ -10,64 +10,46 @@
 <h:head>
     <title>ADMIN PANEL</title>
     <link href="/css/style.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
 </h:head>
 <h:body>
 <div class = "header-container">
     <ul class = "main-menu">
         <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
-        <li><div class = "header">
+        <li>
+            <div class = "header">
             <ul class = "menu">
-                <li><a class="active-menu" href = "#">MAIN</a></li>
-                <li><a href = "#">SUPPORT</a></li>
-                <li><a href = "#">LOUYOT</a></li>
+                <li><a class="active-menu" href = "/secure/admin-main.xhtml">MAIN</a></li>
+                <li><a href = "#">TABLES</a></li>
+                <li><a href = "/logout">LOUYOT</a></li>
             </ul>
-        </div></li>
+        </div>
+        </li>
     </ul>
 </div>
-    <div class = "aside-menu">
-        <h:form>
-            <div class = "left-menu">
-        <ul class = "left-menu-list">
-            <li><a href="#"><i class="fas fa-database"></i><span>  SQL</span></a></li>
-            <li><a href="#"><i class="fas fas fa-download"></i><span>  Download</span></a></li>
-            <li><a><p:link outcome="/secure/admin-table"/><i class="fas fa-table"></i><span>  Table</span></a></li>
-            <li><a href="#"><i class="fas fa-server"></i><span>  Parameter work</span></a></li>
-        </ul>
-        </div>
-        </h:form>
-</div>
-    <div class = "information-block">
+<div class = "information-block">
     <h2 class = "information-text">Statistical information</h2>
 </div>
-
     <h:form>
-        <h3>Data of the program</h3>
-          <p:tabView scrollable="true" style="margin-left: 21%">
-              <p:tab title="Tables">
-                  <h:form>
-                  <p:dataTable rowIndexVar="row" var = "repository" value = "#{adminListController.repositories}">
-                  <p:column headerText = "№">
+        <h3 style="padding-left: 5%">Data of the program</h3>
+             <p:dataTable style="width: 90%; padding-left: 5%;" rowIndexVar="row" var = "repository" value = "#{adminListController.repositories}">
+                  <p:column style="text-align: center; width: 10%;" headerText = "№">
                       <h:outputText value = "#{row+1}"/>
                   </p:column>
-                  <p:column headerText = "Repository">
+                  <p:column style="text-align: left; width: 60%;" headerText = "Repository">
                       <h:outputText value = "#{repository.nameRepository}"/>
                   </p:column>
-                      <p:column headerText = "Number of rows">
-                          <h:outputText value = "#{repository.countRows}"/>
-                      </p:column>
-                  </p:dataTable>
-                  </h:form>
-              </p:tab>
-              <p:tab title="Server">Tab 2 Content</p:tab>
-              <p:tab title="Users">Tab 3 Content</p:tab>
-          </p:tabView>
-    </h:form>
-    <div id = "footer">
-        <ui:insert name="footer">
-            Yaroslav Bodrov
-        </ui:insert>
-    </div>
-
+                  <p:column style="text-align: center; width: 20%;" headerText = "Number of rows">
+                      <h:outputText value = "#{repository.countRows}"/>
+                  </p:column>
+                 <p:column style="text-align: center; width: 10%;" headerText = "Show">
+                     <p:link outcome="#{repository.pathXhtml}" value = "SHOW"/>
+                 </p:column>
+             </p:dataTable>
+     </h:form>
+<div id = "footer">
+     <ui:insert name="footer">
+        Yaroslav Bodrov
+     </ui:insert>
+</div>
 </h:body>
 </html>

@@ -28,6 +28,18 @@ public class ResultService {
         return resultRepository.countByStaff(staff);
     }
 
+    public List<Result> findAllByResultIsNull() {
+        return resultRepository.findAllByResultIsNull();
+    }
+
+    public List<Result> findAllByResultIsNotNullAndStaff(Staff staff) {
+        return resultRepository.findAllByResultIsNotNullAndStaff(staff);
+    }
+
+    public List<Result> findAllByResultIsNullAndStaff(Staff staff) {
+        return resultRepository.findAllByResultIsNullAndStaff(staff);
+    }
+
     public List<Result> findAll() {
         return resultRepository.findAll();
     }

@@ -1,26 +1,45 @@
 package com.bodrov.spring.tutor.database.config;
 
-//@Configuration
-//@EnableWebSecurity
-public class WebSecurityConfig {//} extends WebSecurityConfigurerAdapter {
+import com.bodrov.spring.tutor.database.beans.HandlerAuthorize;
+import com.bodrov.spring.tutor.database.entity.Role;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-  /*  @Autowired
-    DataSource dataSource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
+
+    //@Autowired
+    //DataSource dataSource;
 
     @Autowired
     private HandlerAuthorize handlerAuthorize;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-
             http.authorizeRequests()
                     .antMatchers("/secure/**")
-                    .access("hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')")
+                    .access("hasRole('ROLE_SUPERADMIN') and hasRole('ROLE_USER')")
                     .antMatchers("/teacher/**")
+                    .access("hasRole('ROLE_ADMIN')")
+                    .antMatchers("/user/**")
                     .access("hasRole('ROLE_USER')")
                     .and().formLogin()
                     .loginPage("/login.xhtml").permitAll()
-                    .defaultSuccessUrl("/secure/admin-main.xhtml")
+                    .defaultSuccessUrl("/default")
                     .failureUrl("/login.xhtml");
             http.logout().logoutSuccessUrl("/login.xhtml");
             http.csrf().disable();
@@ -52,5 +71,5 @@ public class WebSecurityConfig {//} extends WebSecurityConfigurerAdapter {
         for(int i=0; i<list.size(); i++) {
             auth.inMemoryAuthentication().withUser(list.get(i));
         }
-    }*/
+    }
 }

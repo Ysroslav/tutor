@@ -4,6 +4,7 @@ import com.bodrov.spring.tutor.database.helper.MyRepository;
 import com.bodrov.spring.tutor.database.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.List;
@@ -17,6 +18,7 @@ public class AdminListController {
 
     private List<MyRepository> repositories;
 
+    @PostConstruct
     public void init(){
         try {
             repositories = adminService.getListRepositories();

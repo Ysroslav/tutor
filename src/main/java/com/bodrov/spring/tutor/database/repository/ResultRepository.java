@@ -14,4 +14,9 @@ public interface ResultRepository extends JpaRepository<Result, String> {
 
     long countByStaff(Staff staff);
 
+    List<Result> findAllByResultIsNull();
+
+    List<Result> findAllByResultIsNotNullAndStaff(Staff staff);
+
+    List<Result> findAllByResultIsNullAndStaff(Staff staff);
 }

@@ -5,10 +5,10 @@ import com.bodrov.spring.tutor.database.entity.Question;
 import com.bodrov.spring.tutor.database.repository.AnswerRepository;
 import com.bodrov.spring.tutor.database.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.annotation.SessionScope;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -21,7 +21,7 @@ public class AnswerListController {
     @Autowired
     private QuestionRepository questionRepository;
 
-    private List<Answer> answers;
+    private List<Answer> answers = new ArrayList<>();
 
     private Question question;
 
@@ -45,7 +45,8 @@ public class AnswerListController {
         final Question question = questionRepository.getOne(idQuestion);
         final Answer answer = new Answer("Add text answer", question);
         answerRepository.save(answer);
-        return "/secure/answer-list.xhtml?faces-redirect=true";
+        System.out.println(idQuestion);
+        return "/secure/answer-list.xhtml?idQuestion=" + idQuestion;
     }
 
     public String refresh(){

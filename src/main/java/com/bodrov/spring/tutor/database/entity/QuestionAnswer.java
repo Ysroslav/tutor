@@ -20,7 +20,7 @@ public class QuestionAnswer extends AbstractEntity {
     public String tabName = TABLE_NAME;
 
     @ManyToOne
-    private Staff staff;
+    private Result result;
 
     @ManyToOne
     private Answer answer;
@@ -28,12 +28,12 @@ public class QuestionAnswer extends AbstractEntity {
     @Column(name = "answer_value", nullable = false)
     private boolean answerValue;
 
-    public Staff getStaff() {
-        return staff;
+    public Result getResult() {
+        return result;
     }
 
-    public void setStaff(Staff staff) {
-        this.staff = staff;
+    public void setResult(Result result) {
+        this.result = result;
     }
 
     public Answer getAnswer() {

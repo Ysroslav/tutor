@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -21,7 +22,7 @@ public class QuestionListController {
     @Autowired
     private PollRepository pollRepository;
 
-    private List<Question> questions;
+    private List<Question> questions = new ArrayList<>();
 
     private String idPoll;
 

@@ -1,6 +1,8 @@
 package com.bodrov.spring.tutor.database.service;
 
+import com.bodrov.spring.tutor.database.entity.Answer;
 import com.bodrov.spring.tutor.database.entity.QuestionAnswer;
+import com.bodrov.spring.tutor.database.entity.Result;
 import com.bodrov.spring.tutor.database.repository.QuestionAnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -17,6 +19,10 @@ public class QuestionAnswerService {
 
     @Autowired
     private QuestionAnswerRepository questionAnswerRepository;
+
+    public Optional<QuestionAnswer> findAllByResultAndAnswer(Result result, Answer answer) {
+        return questionAnswerRepository.findAllByResultAndAnswer(result, answer);
+    }
 
     public List<QuestionAnswer> findAll() {
         return questionAnswerRepository.findAll();

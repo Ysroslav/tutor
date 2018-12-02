@@ -10,11 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
 @ViewScoped
-public class TeacherAddTestController {
+public class UserMainController {
+
+    @Nullable
+    private String id;
 
     @Autowired
     private StaffRepository staffRepository;
@@ -22,25 +26,26 @@ public class TeacherAddTestController {
     @Autowired
     private ResultRepository resultRepository;
 
-    @Nullable
-    private String id;
+    private List<Result> resultsNotDone = new ArrayList<Result>();
+
+    private List<Result> resultsDone = new ArrayList<Result>();
 
     @NotNull
     private Staff staff = new Staff();
 
-    private List<Result> newTests;
-
-    public void init(){
-        final Staff staff = staffRepository.getOne(id);
+    public void init() {
+        @Nullable final Staff staff = staffRepository.getOne(id);
         if (staff != null) this.staff = staff;
-        newTests = resultRepository.findAllByResultIsNullAndStaff(staff);
+        resultsNotDone = resultRepository.findAllByResultIsNullAndStaff(staff);
+        resultsDone = resultRepository.findAllByResultIsNotNullAndStaff(staff);
     }
 
+    @Nullable
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@Nullable final  String id) {
         this.id = id;
     }
 
@@ -48,15 +53,23 @@ public class TeacherAddTestController {
         return staff;
     }
 
-    public void setStaff(Staff staff) {
+    public void setStaff(final Staff staff) {
         this.staff = staff;
     }
 
-    public List<Result> getNewTests() {
-        return newTests;
+    public List<Result> getResultsNotDone() {
+        return resultsNotDone;
     }
 
-    public void setNewTests(List<Result> newTests) {
-        this.newTests = newTests;
+    public void setResultsNotDone(List<Result> resultsNotDone) {
+        this.resultsNotDone = resultsNotDone;
+    }
+
+    public List<Result> getResultsDone() {
+        return resultsDone;
+    }
+
+    public void setResultsDone(List<Result> resultsDone) {
+        this.resultsDone = resultsDone;
     }
 }

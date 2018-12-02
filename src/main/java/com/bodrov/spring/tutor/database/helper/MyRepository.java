@@ -9,11 +9,15 @@ public class MyRepository {
 
     private long countRows;
 
+    private String pathXhtml;
+
     public MyRepository(){}
 
     public MyRepository(String nameRepository, long countRows){
         this.nameRepository = nameRepository;
         this.countRows = countRows;
+        this.pathXhtml = "/secure/" + nameRepository.toLowerCase()
+                .replaceAll("repository", "") + "-list";
     }
 
     public String getNameRepository() {
@@ -30,5 +34,13 @@ public class MyRepository {
 
     public void setCountRows(long countRows) {
         this.countRows = countRows;
+    }
+
+    public String getPathXhtml() {
+        return pathXhtml;
+    }
+
+    public void setPathXhtml(String pathXhtml) {
+        this.pathXhtml = pathXhtml;
     }
 }

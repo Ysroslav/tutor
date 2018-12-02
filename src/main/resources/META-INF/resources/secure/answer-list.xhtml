@@ -5,17 +5,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
       xml:lang="en" lang="en">
 <h:head>
     <title>Title</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     <f:metadata>
         <f:viewParam name="idQuestion" value="#{answerListController.idQuestion}" />
         <f:viewAction action="#{answerListController.init}" />
     </f:metadata>
 </h:head>
 <h:body>
-    <h2>ANSWERS</h2>
+    <div class = "header-container">
+        <ul class = "main-menu">
+            <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
+            <li><div class = "header">
+                <ul class = "menu">
+                    <li><a class="active-menu" href = "/secure/admin-main.xhtml">MAIN</a></li>
+                    <li><a href = "#">TABLES</a></li>
+                    <li><a href = "/logout">LOUYOT</a></li>
+                </ul>
+            </div></li>
+        </ul>
+    </div>
+    <h3>ANSWERS</h3>
     <h3><h:outputText value="#{answerListController.question.questionText}"/></h3>
     <h:form>
         <p:dataTable rowIndexVar="row" var = "answer" value = "#{answerListController.answers}">
@@ -45,8 +58,14 @@
         </p:dataTable>
     </h:form>
     <h:form>
-        <h:commandButton value = "CREATE A NEW QUESTIONS" action="#{answerListController.save}"/>
+        <h:commandButton value = "CREATE A NEW ANSWER" action="#{answerListController.save}"/>
         <h:commandButton value = "REFRESH" action="#{answerListController.refresh}"/>
     </h:form>
+    <div id = "footer">
+        <ui:insert name="footer">
+            Yaroslav Bodrov
+        </ui:insert>
+    </div>
+
 </h:body>
 </html>
