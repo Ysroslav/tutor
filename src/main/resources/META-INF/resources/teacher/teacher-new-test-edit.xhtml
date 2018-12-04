@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>NEW TEST EDIT</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <f:metadata>
+        <f:viewParam name="id" value="#{teacherNewTestEdit.id}" />
+        <f:viewAction action="#{teacherNewTestEdit.init}" />
+    </f:metadata>
+</h:head>
+<h:body>
+    <div class = "header-container">
+        <ul class = "main-menu">
+            <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
+            <li><div class = "header">
+                <ul class = "menu">
+                    <li><a class="active-menu" href = "#">MAIN</a></li>
+                    <li><a href = "#">STAFF</a></li>
+                    <li><a href = "#">POLL</a></li>
+                    <li><a href = "#">LOYOUT</a></li>
+                </ul>
+            </div></li>
+        </ul>
+    </div>
+
+    <h1><p:outputLabel value="EDIT NEW ASSIGNED" /></h1>
+    <h:form>
+        <p:outputPanel>
+            <p:outputLabel value="STAFF" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <h:outputText value="#{teacherNewTestEdit.result.staff.lastName} #{teacherNewTestEdit.result.staff.firstName}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:outputLabel value="NAME TEST" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <h:outputText value="#{teacherNewTestEdit.result.poll.testName}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:outputLabel value="MIN BALL FOR SUCCESS" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <h:outputText value="#{teacherNewTestEdit.result.poll.minValueBall}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:outputLabel value="TIME FOR TEST" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <h:outputText value="#{teacherNewTestEdit.result.poll.timeTest}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:outputLabel value="CONTROL DATE" />
+        </p:outputPanel>
+        <p:outputPanel>
+            <p:calendar value="#{teacherNewTestEdit.result.dateTo}" />
+        </p:outputPanel>
+        <p:spacer height="20" />
+
+        <p:outputPanel>
+            <p:commandButton value="SAVE" action="#{teacherNewTestEdit.save}" />
+            <p:spacer width="20" />
+            <p:button value="BACK" outcome="/teacher/teacher-main">
+                <f:param name="a" value="1" />
+            </p:button>
+        </p:outputPanel>
+
+    </h:form>
+</h:body>
+</html>
