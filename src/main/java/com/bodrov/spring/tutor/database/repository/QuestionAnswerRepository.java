@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -14,4 +15,6 @@ import java.util.Optional;
 public interface QuestionAnswerRepository extends JpaRepository<QuestionAnswer, String> {
 
     Optional<QuestionAnswer> findAllByResultAndAnswer(Result result, Answer answer);
+
+    List<QuestionAnswer> findAllByResultAndAnswerValue(Result result, Boolean answerValue);
 }

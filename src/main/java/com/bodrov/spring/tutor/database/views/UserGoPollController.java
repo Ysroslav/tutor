@@ -2,6 +2,7 @@ package com.bodrov.spring.tutor.database.views;
 
 import com.bodrov.spring.tutor.database.entity.Answer;
 import com.bodrov.spring.tutor.database.entity.Question;
+import com.bodrov.spring.tutor.database.entity.QuestionAnswer;
 import com.bodrov.spring.tutor.database.entity.Result;
 import com.bodrov.spring.tutor.database.repository.AnswerRepository;
 import com.bodrov.spring.tutor.database.repository.QuestionAnswerRepository;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Named
@@ -39,10 +41,10 @@ public class UserGoPollController {
 
     private List<Answer> answers = new ArrayList<>();
 
-
+    private List<QuestionAnswer> staffAns = new ArrayList<>();
+    
     @NotNull
     private Result result = new Result();
-
 
     @Nullable
     private Integer index;
@@ -57,6 +59,29 @@ public class UserGoPollController {
         this.questions = questionRepository.findAllByPoll(result.getPoll());
         final Question question = this.questions.get(0);
         this.answers = answerRepository.findAllByQuestion(question);
+        this.staffAns = updateAns(this.result, answers);
+    }
+
+    private List<QuestionAnswer> updateAns(Result result, List<Answer> list){
+        List<QuestionAnswer> listAns = new ArrayList<>();
+        for(int i = 0; i<list.size();i++){
+          QuestionAnswer ans = new QuestionAnswer();
+          if(questionAnswerRepository.findAllByResultAndAnswer(result,list.get(i)).isPresent()){
+              ans = questionAnswerRepository.findAllByResultAndAnswer(result, list.get(i)).get();
+          } else {
+              ans.setResult(result);
+              ans.setAnswer(list.get(i));
+          }
+          listAns.add(ans);
+        }
+        return listAns;
+    }
+
+    public void putAnswer(QuestionAnswer answer){
+        answer.setAnswerValue(true);
+        for(int i=0; i<staffAns.size();i++){
+            if(!staffAns.get(i).equals(answer)) staffAns.get(i).setAnswerValue(false);
+        }
     }
 
     public String getOneQuestion(Integer index){
@@ -65,28 +90,36 @@ public class UserGoPollController {
     }
 
     public void getAnswerStaff(){
-        System.out.println(idAnswer);
-        /*final Answer answer = answerRepository.getOne(idAnswer);
-        QuestionAnswer questionAnswer = new QuestionAnswer();
-        Optional<QuestionAnswer> ans = questionAnswerRepository.findAllByResultAndAnswer(result, answer);
-        if(ans.isPresent()){
-           questionAnswer = ans.get();
-        } else {
-            questionAnswer.setResult(result);
-        }
-        questionAnswer.setAnswer(answer);
-        questionAnswerRepository.save(questionAnswer);
-        getIncrement();*/
+        for(int i = 0; i<staffAns.size(); i++)
+            questionAnswerRepository.save(staffAns.get(i));
+        getIncrement();
     }
 
     public void getIncrement(){
         if (index==questions.size()-1) index = 0; else index++;
         this.answers = answerRepository.findAllByQuestion(questions.get(index));
+        this.staffAns = updateAns(this.result, answers);
     }
 
     public void getDiscrement(){
         if (index==0) index = questions.size()-1; else index--;
         this.answers = answerRepository.findAllByQuestion(questions.get(index));
+        this.staffAns = updateAns(this.result, answers);
+    }
+
+
+    public String finishTest(){
+        List<QuestionAnswer> list = questionAnswerRepository.findAllByResultAndAnswerValue(result,true);
+        int ball=0;
+        for(int i=0;i<list.size();i++)
+            ball +=list.get(i).getAnswer().getBallValue();
+        System.out.println(ball);
+        if(ball<result.getPoll().getMinValueBall()) result.setResult("Not done");
+        else result.setResult("Done");
+        result.setBallResult(ball);
+        result.setDateEnd(new Date());
+        resultRepository.save(result);
+        return "/staff/staff-result?faces-redirect=true id=" + result.getId();
     }
 
     @Nullable
@@ -123,7 +156,6 @@ public class UserGoPollController {
         this.answers = answers;
     }
 
-
     public String getIdAnswer() {
         return idAnswer;
     }
@@ -140,4 +172,11 @@ public class UserGoPollController {
         this.result = result;
     }
 
+    public List<QuestionAnswer> getStaffAns() {
+        return staffAns;
+    }
+
+    public void setStaffAns(List<QuestionAnswer> staffAns) {
+        this.staffAns = staffAns;
+    }
 }

@@ -34,7 +34,7 @@ public class TeacherPanelController {
     public String countAverageRateSuccess(Staff staff){
         final List<Result> resultList = resultRepository.findAllByResultIsNotNullAndStaff(staff);
         if(resultList.size()==0) return "No tests passed";
-        long numberSuccess = 0;
+        double numberSuccess = 0;
         for(int i = 0; i<resultList.size(); i++){
             if(resultList.get(i).getResult().equals(SUCCESS)) numberSuccess++;
         }

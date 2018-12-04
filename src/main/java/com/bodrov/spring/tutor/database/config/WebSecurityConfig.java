@@ -22,9 +22,6 @@ import java.util.Map;
 @EnableWebSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
-    //@Autowired
-    //DataSource dataSource;
-
     @Autowired
     private HandlerAuthorize handlerAuthorize;
 

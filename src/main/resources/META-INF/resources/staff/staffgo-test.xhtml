@@ -29,33 +29,26 @@
         </li>
     </ul>
 </div>
-<!--h:form id="display">
-    <h2><h:outputText value="#{userGoPollController.questions.get(userGoPollController.index).questionText}"/></h2>
-        <p:dataTable id="tab-answer" rowIndexVar="row" var = "answer" value = "#{userGoPollController.answers}">
-            <p:column>
-               <p:selectOneRadio id="console" value="#{answer.right}">
-                  <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-               </p:selectOneRadio>
-            </p:column>
-            <p:column>
-                <h:outputText value = "#{answer.answerText}"/>
-            </p:column>
-            <p:column>
-                <h:selectBooleanCheckbox value = "#{answer.right}"/>
-            </p:column>
-        </p:dataTable>
-</h:form-->
 <h:form id="display">
     <h2><h:outputText value="#{userGoPollController.questions.get(userGoPollController.index).questionText}"/></h2>
-    <p:selectOneRadio id = "idAnswer" value="#{userGoPollController.idAnswer}" layout="responsive" columns="1">
-        <f:selectItems value="#{userGoPollController.answers}" var="c" itemLabel="#{c.answerText}" itemValue="#{c.id}"/>
-    </p:selectOneRadio>
+        <p:dataTable styleClass="ans-table" rowStyleClass="row-ans-table" id="tab-answer" rowIndexVar="row"
+                     var = "answer" value = "#{userGoPollController.staffAns}">
+            <p:column style="width: 5%; border: 0px" >
+                    <p:selectBooleanCheckbox value="#{answer.answerValue}">
+                        <p:ajax update="display" listener="#{userGoPollController.putAnswer(answer)}"/>
+                    </p:selectBooleanCheckbox>
+            </p:column>
+            <p:column style="width: 95%; border: 0px" >
+                <h:outputText value = "#{answer.answer.answerText}"/>
+            </p:column>
+        </p:dataTable>
 </h:form>
 <h:form>
-    <h:panelGrid columns="3" style="margin-top: 10px">
+    <h:panelGrid columns="4" style="margin-top: 10px">
         <p:commandButton value="Back" update="display" action="#{userGoPollController.getDiscrement}"/>
-        <p:commandButton value="Answer" action="#{userGoPollController.getAnswerStaff}"/>
+        <p:commandButton value="Answer" update="display" action="#{userGoPollController.getAnswerStaff}"/>
         <p:commandButton value="Forward" update="display" action="#{userGoPollController.getIncrement}"/>
+        <p:commandButton style="margin-left: 700px;" value="Finish" action="#{userGoPollController.finishTest}"/>
     </h:panelGrid>
 </h:form>
 </h:body>

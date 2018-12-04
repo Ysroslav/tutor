@@ -16,7 +16,6 @@ public class UserRoleListController {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
-
     private List<UserRole> userRoles;
 
     public List<UserRole> getUserRoles() {
@@ -26,7 +25,6 @@ public class UserRoleListController {
     public void setUserRoles(List<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
-
 
     @PostConstruct
     public void init(){

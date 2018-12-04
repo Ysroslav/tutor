@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>RESULT STAFF</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <f:metadata>
+        <f:viewParam name="id" value="#{userResultController.id}" />
+        <f:viewAction action="#{userResultController.init}" />
+    </f:metadata>
+</h:head>
+<h:body>
+    <div class = "header-container">
+        <ul class = "main-menu">
+            <li><a class = "logo"><p:graphicImage name="image/logo.png"/></a></li>
+            <li><div class = "header">
+                <ul class = "menu">
+                    <li><a class="active-menu" href = "#">MAIN</a></li>
+                    <li><a href = "#">STAFF</a></li>
+                    <li><a href = "#">POLL</a></li>
+                    <li><a href = "#">LOYOUT</a></li>
+                </ul>
+            </div></li>
+        </ul>
+    </div>
+    <h3><h:outputText value="Staff: #{userResultController.result.staff.lastName} #{userResultController.result.staff.firstName}"/></h3>
+    <h3><h:outputText value="Result: #{userResultController.result.result}"/></h3>
+    <h3><h:outputText value="#{userResultController.result.ballResult} from #{userResultController.result.poll.minValueBall}"/></h3>
+    <h3>Not correct answer</h3>
+
+    <h:form>
+        <p:dataTable var="ans" value="#{userResultController.staffAns}">
+            <p:column style="width:16px">
+                <p:rowToggler />
+            </p:column>
+            <p:column headerText="Question">
+                <h:outputText value="#{ans.answer.question.questionText}" />
+            </p:column>
+            <p:rowExpansion>
+                <p:panelGrid  columns="1" columnClasses="label,value" style="width:300px">
+                    <h:outputText value="The answer of staff:" />
+                    <h:outputText value="#{ans.answer.answerText}" />
+                </p:panelGrid>
+            </p:rowExpansion>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>

@@ -23,7 +23,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<start-class>com.bodrov.spring.tutor.TutorApplication</start-class>
-		<project.basedir>D:/projects/tutor</project.basedir>
 	</properties>
 
 	<developers>

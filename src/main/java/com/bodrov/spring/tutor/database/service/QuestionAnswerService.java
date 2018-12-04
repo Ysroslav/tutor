@@ -24,6 +24,10 @@ public class QuestionAnswerService {
         return questionAnswerRepository.findAllByResultAndAnswer(result, answer);
     }
 
+    public List<QuestionAnswer> findAllByResultAndAnswerValue(Result result, Boolean answerValue) {
+        return questionAnswerRepository.findAllByResultAndAnswerValue(result, answerValue);
+    }
+
     public List<QuestionAnswer> findAll() {
         return questionAnswerRepository.findAll();
     }

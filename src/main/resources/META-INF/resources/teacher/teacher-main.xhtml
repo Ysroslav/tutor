@@ -47,7 +47,7 @@
                 <h:outputText value = "#{teacherPanelController.countAverageRateSuccess(staff)}"/>
             </p:column>
             <p:column headerText = "SHOW">
-                <p:link value = "SHOW">
+                <p:link outcome="/teacher/teacher-staff-poll" value = "SHOW">
                     <f:param name = "id" value =  "#{staff.id}"/>
                 </p:link>
             </p:column>

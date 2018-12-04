@@ -122,3 +122,17 @@ img{
     margin-left: 50px;
     list-style-type:none;
 }
+.ans-table{
+    border-collapse: separate;
+    border: 2px solid gray;
+    width: 95%;
+    overflow-scrolling: auto;
+}
+.ans-table.ui-datatable table tr th{
+    background: white;
+}
+
+.row-ans-table{
+    border: 2px solid white;
+    background: white;
+}
