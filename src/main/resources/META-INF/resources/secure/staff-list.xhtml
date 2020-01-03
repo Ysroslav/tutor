@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en" lang="en">
+<head>
+    <title>STAFFS</title>
+</head>
+<h:body>
+    <h2>STAFF</h2>
+    <h:form>
+        <p:dataTable rowIndexVar="row" var = "staff" value = "#{staffListController.staffs}">
+            <p:column headerText = "№">
+                <h:outputText value = "#{row+1}"/>
+            </p:column>
+            <p:column headerText = "Id">
+                <h:outputText value = "#{staff.id}"/>
+            </p:column>
+            <p:column headerText = "First Name">
+                <h:outputText value = "#{staff.firstName}"/>
+            </p:column>
+            <p:column headerText = "Last Name">
+                <h:outputText value = "#{staff.lastName}"/>
+            </p:column>
+            <p:column headerText = "Date of add in the base">
+                <h:outputText value = "#{staff.dateAddStaff}">
+                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column headerText = "The department">
+                <h:outputText value = "#{staff.department.departmentName}"/>
+            </p:column>
+            <p:column headerText = "EDIT">
+                <p:link outcome="/secure/staff-edit" value = "EDIT">
+                    <f:param name = "id" value =  "#{staff.id}"/>
+                </p:link>
+            </p:column>
+            <p:column headerText = "REMOVE">
+                <h:commandButton value = "REMOVE" action="#{staffListController.deleteById(staff.id)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    <h:form>
+        <h:commandButton value = "CREATE A NEW DEPARTMENT" action="#{staffListController.save}"/>
+        <h:commandButton value = "REFRESH" action="#{staffListController.refresh}"/>
+    </h:form>
+</h:body>
+</html>

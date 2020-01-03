@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Title</title>
+    <f:metadata>
+        <f:viewParam name="idQuestion" value="#{answerListController.idQuestion}" />
+        <f:viewAction action="#{answerListController.init}" />
+    </f:metadata>
+</h:head>
+<h:body>
+    <h2>ANSWERS</h2>
+    <h3><h:outputText value="#{answerListController.question.questionText}"/></h3>
+    <h:form>
+        <p:dataTable rowIndexVar="row" var = "answer" value = "#{answerListController.answers}">
+            <p:column headerText = "№">
+                <h:outputText value = "#{row+1}"/>
+            </p:column>
+            <p:column headerText = "Id">
+                <h:outputText value = "#{answer.id}"/>
+            </p:column>
+            <p:column headerText = "The text of the answer">
+                <h:outputText value = "#{answer.answerText}"/>
+            </p:column>
+            <p:column headerText = "Right">
+                <h:selectBooleanCheckbox value = "#{answer.right}"/>
+            </p:column>
+            <p:column headerText = "Balls">
+                <h:outputText value = "#{answer.ballValue}"/>
+            </p:column>
+            <p:column headerText = "EDIT">
+                <p:link outcome="/secure/answer-edit" value = "EDIT">
+                    <f:param name = "id" value =  "#{answer.id}"/>
+                </p:link>
+            </p:column>
+            <p:column headerText = "REMOVE">
+                <h:commandButton value = "REMOVE" action="#{answerListController.deleteById(answer.id)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    <h:form>
+        <h:commandButton value = "CREATE A NEW QUESTIONS" action="#{answerListController.save}"/>
+        <h:commandButton value = "REFRESH" action="#{answerListController.refresh}"/>
+    </h:form>
+</h:body>
+</html>
